@@ -4,7 +4,7 @@ package src;
 public class PlutoRover {
 	
 	private Location loc;
-	private static final int GRID_LIMIT = 99;
+
 	
 	public PlutoRover() {
 		loc = new Location();

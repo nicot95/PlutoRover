@@ -4,6 +4,7 @@ public class Location {
 	
 	private Direction dir;
 	private int xCoord, yCoord;
+	private static final int GRID_LIMIT = 100;
 	
 	public Location() {
 		dir = Direction.N;
@@ -13,10 +14,10 @@ public class Location {
 	
 	public void move(int d) {
 		switch(dir) {
-		case N: yCoord += d; break;
-		case S: yCoord -= d; break;
-		case E: xCoord += d; break;
-		case W: xCoord -= d; break;
+		case N: yCoord = (yCoord + d) % GRID_LIMIT; break;
+		case S: yCoord -= d; if(yCoord < 0) yCoord = GRID_LIMIT-1; break;
+		case E: xCoord = (xCoord + d) % GRID_LIMIT; break;
+		case W: xCoord -= d; if(xCoord < 0) xCoord = GRID_LIMIT-1; break;
 		}
 	}
 	

@@ -12,7 +12,7 @@ import static org.hamcrest.core.Is.is;
 public class PlutoRoverTest {
 	
 	private PlutoRover rover = new PlutoRover();
-	private static final int GRID_LIMIT = 99;
+	private static final int GRID_LIMIT = 100;
 	
 	@Test
 	public void roverMovesForward() {
@@ -116,10 +116,10 @@ public class PlutoRoverTest {
 		int initialXCoord = rover.getXCoord();
 		Direction initialDir = rover.getDir();
 		
-		rover.interpret("B");
+		rover.interpret("F");
 		
 		// south edge wrapped to north edge
-		assertThat(rover.getYCoord(), is(GRID_LIMIT -1));
+		assertThat(rover.getYCoord(), is(GRID_LIMIT-1));
 		
 		//X coordinate and direction remains unchanged
 		assertThat(rover.getDir(), is(initialDir));
@@ -134,10 +134,10 @@ public class PlutoRoverTest {
 		int initialYCoord = rover.getYCoord();
 		Direction initialDir = rover.getDir();
 		
-		rover.interpret("B");
+		rover.interpret("F");
 		
 		// west edge wrapped to east edge
-		assertThat(rover.getXCoord(), is(GRID_LIMIT -1));
+		assertThat(rover.getXCoord(), is(GRID_LIMIT-1));
 		
 		//X coordinate and direction remains unchanged
 		assertThat(rover.getDir(), is(initialDir));
