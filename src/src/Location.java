@@ -4,6 +4,7 @@ public class Location {
 	
 	private Direction dir;
 	private int xCoord, yCoord;
+	private int[][] grid;
 	private static final int GRID_LIMIT = 100;
 	
 	public Location() {
@@ -21,6 +22,7 @@ public class Location {
 		}
 	}
 	
+	
 	public Direction getDir() {
 		return dir;
 	}
@@ -35,6 +37,10 @@ public class Location {
 	
 	public void rotate(int d) {
 		dir = dir.rotate(d);
+	}
+	
+	public void setGrid(int[][] grid) {
+		this.grid = grid;
 	}
 
 }

@@ -43,5 +43,8 @@ public class PlutoRover {
 		return loc.getDir();
 	}
 	
+	public void setGrid(int[][] grid) {
+		loc.setGrid(grid);
+	}
 
 }

@@ -1,6 +1,10 @@
 package test;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.util.Arrays;
+
+import javax.naming.InitialContext;
+
 import org.junit.Test;
 
 import src.Direction;
@@ -64,6 +68,7 @@ public class PlutoRoverTest {
 	
 	@Test
 	public void roverRotatesLeft() {
+		rover.resetLocation();
 		int initialXCoord = rover.getXCoord();
 		int initialYCoord = rover.getYCoord();
 		
@@ -80,6 +85,7 @@ public class PlutoRoverTest {
 	
 	@Test
 	public void roverRotatesRight() {
+		rover.resetLocation();
 		int initialXCoord = rover.getXCoord();
 		int initialYCoord = rover.getYCoord();
 		
@@ -144,5 +150,20 @@ public class PlutoRoverTest {
 		assertThat(rover.getYCoord(), is(initialYCoord));
 	}
 	
+	@Test
+	public void collisionDetection() {
+		rover.resetLocation();
+		int[][] grid = new int[100][100];
+		Arrays.fill(grid, 0);
+		grid[1][0] = 1;
+		rover.setGrid(grid);
+		
+		int initalYCoord = rover.getYCoord();
+		
+		rover.interpret("FFFF");
+		
+		//obstacle detected
+		assertThat(rover.getYCoord(), is(initalYCoord));
+	}
 	
 }
