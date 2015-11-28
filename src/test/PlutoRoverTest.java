@@ -8,9 +8,11 @@ import src.PlutoRover;
 import static org.hamcrest.core.Is.is;
 
 
+
 public class PlutoRoverTest {
 	
 	private PlutoRover rover = new PlutoRover();
+	private static final int GRID_LIMIT = 99;
 	
 	@Test
 	public void roverMovesForward() {
@@ -105,4 +107,42 @@ public class PlutoRoverTest {
 		assertThat(initialYCoord, is(rover.getYCoord()));
 		assertThat(initialDir, is(rover.getDir()));
 	}	
+	
+	@Test
+	public void wrappingHorizontalEdge() {
+		// face south edge
+		rover.resetLocation();
+		rover.interpret("RR");
+		int initialXCoord = rover.getXCoord();
+		Direction initialDir = rover.getDir();
+		
+		rover.interpret("B");
+		
+		// south edge wrapped to north edge
+		assertThat(rover.getYCoord(), is(GRID_LIMIT -1));
+		
+		//X coordinate and direction remains unchanged
+		assertThat(rover.getDir(), is(initialDir));
+		assertThat(rover.getXCoord(), is(initialXCoord));
+	}
+	
+	@Test
+	public void wrappingVerticalEdge() {
+		// face west edge
+		rover.resetLocation();
+		rover.interpret("L");
+		int initialYCoord = rover.getYCoord();
+		Direction initialDir = rover.getDir();
+		
+		rover.interpret("B");
+		
+		// west edge wrapped to east edge
+		assertThat(rover.getXCoord(), is(GRID_LIMIT -1));
+		
+		//X coordinate and direction remains unchanged
+		assertThat(rover.getDir(), is(initialDir));
+		assertThat(rover.getYCoord(), is(initialYCoord));
+	}
+	
+	
 }

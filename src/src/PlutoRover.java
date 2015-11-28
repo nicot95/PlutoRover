@@ -4,6 +4,7 @@ package src;
 public class PlutoRover {
 	
 	private Location loc;
+	private static final int GRID_LIMIT = 99;
 	
 	public PlutoRover() {
 		loc = new Location();
@@ -25,6 +26,10 @@ public class PlutoRover {
 		case 'R' : loc.rotate(1); break;
 		}
  	}
+	
+	public void resetLocation() {
+		loc = new Location();
+	}
 	
 	public int getXCoord() {
 		return loc.getxCoord();
