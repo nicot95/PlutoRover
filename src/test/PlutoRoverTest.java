@@ -55,10 +55,59 @@ public class PlutoRoverTest {
 				
 		//X,Y coordinates and direction remains unchanged
 		assertThat(initialXCoord, is(rover.getXCoord()));
-		assertThat(rover.getYCoord(), is(initialYCoord));
+		assertThat(initialYCoord, is(rover.getYCoord()));
 		assertThat(initialDir, is(rover.getDir()));
 		
 	}
+	
+	@Test
+	public void roverRotatesLeft() {
+		int initialXCoord = rover.getXCoord();
+		int initialYCoord = rover.getYCoord();
+		Direction initialDir = rover.getDir();
+		
+		rover.interpret("L");
+		
+		// New direction is 90 degrees to the left
+		assertThat(rover.getDir().ordinal(), is(initialDir.ordinal() -1));
+		
+		//X,Y coordinates and direction remains unchanged
+		assertThat(initialXCoord, is(rover.getXCoord()));
+		assertThat(initialYCoord, is(rover.getYCoord()));
+		
+	}
+	
+	@Test
+	public void roverRotatesRight() {
+		int initialXCoord = rover.getXCoord();
+		int initialYCoord = rover.getYCoord();
+		Direction initialDir = rover.getDir();
+		
+		rover.interpret("R");
+		
+		// New direction is 90 degrees to the right
+		assertThat(rover.getDir().ordinal(), is(initialDir.ordinal() +1));
+		
+		//X,Y coordinates and direction remains unchanged
+		assertThat(initialXCoord, is(rover.getXCoord()));
+		assertThat(initialYCoord, is(rover.getYCoord()));
+		
+	}
+	
+	@Test 
+	public void roverMovesForwardAndRotatesCorrectly() {
+		int initialXCoord = rover.getXCoord();
+		int initialYCoord = rover.getYCoord();
+		Direction initialDir = rover.getDir();
+		
+		rover.interpret("FFBBFFRFFRFFRFFR");
+		
+		//X,Y coordinates and direction remains unchanged
+		assertThat(initialXCoord, is(rover.getXCoord()));
+		assertThat(initialYCoord, is(rover.getYCoord()));
+		assertThat(initialDir, is(rover.getDir()));
+	}
+	
 	
 	
 }
