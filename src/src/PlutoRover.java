@@ -21,6 +21,8 @@ public class PlutoRover {
 		switch(c) {
 		case 'F' : loc.move(1); break;
 		case 'B' : loc.move(-1); break;
+		case 'L' : loc.rotate(-1); break;
+		case 'R' : loc.rotate(1); break;
 		}
  	}
 	

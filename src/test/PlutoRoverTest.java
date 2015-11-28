@@ -64,12 +64,11 @@ public class PlutoRoverTest {
 	public void roverRotatesLeft() {
 		int initialXCoord = rover.getXCoord();
 		int initialYCoord = rover.getYCoord();
-		Direction initialDir = rover.getDir();
 		
 		rover.interpret("L");
 		
 		// New direction is 90 degrees to the left
-		assertThat(rover.getDir().ordinal(), is(initialDir.ordinal() -1));
+		assertThat(rover.getDir(), is(Direction.W));
 		
 		//X,Y coordinates and direction remains unchanged
 		assertThat(initialXCoord, is(rover.getXCoord()));
@@ -81,12 +80,11 @@ public class PlutoRoverTest {
 	public void roverRotatesRight() {
 		int initialXCoord = rover.getXCoord();
 		int initialYCoord = rover.getYCoord();
-		Direction initialDir = rover.getDir();
 		
 		rover.interpret("R");
 		
 		// New direction is 90 degrees to the right
-		assertThat(rover.getDir().ordinal(), is(initialDir.ordinal() +1));
+		assertThat(rover.getDir(), is(Direction.E));
 		
 		//X,Y coordinates and direction remains unchanged
 		assertThat(initialXCoord, is(rover.getXCoord()));
@@ -106,8 +104,5 @@ public class PlutoRoverTest {
 		assertThat(initialXCoord, is(rover.getXCoord()));
 		assertThat(initialYCoord, is(rover.getYCoord()));
 		assertThat(initialDir, is(rover.getDir()));
-	}
-	
-	
-	
+	}	
 }

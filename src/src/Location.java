@@ -31,5 +31,9 @@ public class Location {
 	public int getyCoord() {
 		return yCoord;
 	}
+	
+	public void rotate(int d) {
+		dir = dir.rotate(d);
+	}
 
 }
